@@ -3,12 +3,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-end
 
-resources :articles
+  resources :articles
 
-resources :articles do
-  collection do
-    get 'search'
+  resources :articles do
+    collection do
+      get 'search'
+    end
   end
+
+  patch 'tasks/:id/complete', to: 'tasks#complete', as: :complete_task
 end
